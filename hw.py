@@ -8,6 +8,10 @@ missing_elements([1, 2, 4, 6, 7]) -> [3, 5]
 """
 
 def missing_elements(my_list: list) -> list:
+    if not my_list:
+        return my_list
+    else:
+        return [value for value in range(min(my_list),max(my_list)+1) if value not in my_list]
     pass
 
 """
@@ -21,6 +25,13 @@ count_occurrences([1, 2, 3, 1, 2, 4, 5, 4]) -> {1: 2, 2: 2, 3: 1, 4: 2, 5: 1}
 """
 
 def count_occurrences(my_list: list) -> dict:
+    occu_dict = {}
+    for value in my_list:
+        if value in occu_dict:
+            occu_dict[value] += 1
+        else:
+            occu_dict[value] = 1
+    return occu_dict
     pass
 
 
@@ -34,6 +45,9 @@ common_elements([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]) -> [3, 4, 5]
 """
 
 def common_elements(list1: list, list2: list) -> list:
+    list3 = []
+    list3 = [value for value in list1 if value in list2]
+    return list3
     pass
 
 """
@@ -46,6 +60,13 @@ char_frequency('hello world') -> {'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1
 """
 
 def char_frequency(my_string: str) -> dict:
+    occu_dict = {}
+    for value in my_string:
+        if value in occu_dict:
+            occu_dict[value] += 1
+        else:
+            occu_dict[value] = 1
+    return occu_dict
     pass
 
 """
@@ -58,6 +79,10 @@ unique_words('hello world hello') -> 2
 """
 
 def unique_words(my_string: str) -> int:
+    l = []
+    l = my_string.split()
+    count = len(set(l))
+    return count
     pass
 
 """
@@ -70,6 +95,10 @@ word_frequency('hello world hello') -> {'hello': 2, 'world': 1}
 """
 
 def word_frequency(my_string: str) -> dict:
+    l = []
+    l = my_string.split()
+    wordfreq=[l.count(p) for p in l]
+    return dict(zip(l,wordfreq))
     pass
 
 """
@@ -83,6 +112,12 @@ count_in_range([1, 2, 3, 4, 5, 4, 3, 2, 1], 2, 4) -> 3
 """
 
 def count_in_range(my_list: list, start: int, end: int) -> int:
+    count = 0
+    my_set = set(my_list)
+    for value in my_set:
+        if (value<=end and value>=start):
+            count += 1
+    return count
     pass
 
 """
@@ -96,6 +131,8 @@ swap_dict({1: 'a', 2: 'b', 3: 'c'}) -> {'a': 1, 'b': 2, 'c': 3}
 """
 
 def swap_dict(d: dict) -> dict:
+    #swapped_dict = {value: key for key, value in d.items()}
+    #return swapped_dict
     pass
 
 """
@@ -108,6 +145,7 @@ is_subset({1, 2, 3, 4, 5}, {3, 4, 5}) -> True
 """
 
 def is_subset(set1: set, set2: set) -> bool:
+    return set2.issubset(set1)
     pass
 
 """
@@ -120,6 +158,9 @@ list_intersection([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]) -> [3, 4, 5]
 """
 
 def list_intersection(list1: list, list2: list) -> list:
+    list3 = []
+    list3 = [value for value in list1 if value in list2]
+    return list3
     pass
 
 """
@@ -132,6 +173,8 @@ list_union([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]) -> [1, 2, 3, 4, 5, 6, 7]
 """
 
 def list_union(list1: list, list2: list) -> list:
+    list3 = list(set(list1) | set(list2))
+    return list3
     pass
 
 """
@@ -144,6 +187,8 @@ most_frequent([1, 2, 3, 1, 2, 4, 5, 4, 1]) -> 1
 """
 
 def most_frequent(my_list: list) -> int:
+    most_frequent = max(my_list, key=lambda x: my_list.count(x))
+    return most_frequent
     pass
 
 """
@@ -156,5 +201,7 @@ least_frequent([1, 2, 3, 1, 2, 4, 5, 4, 1]) -> 3
 """
 
 def least_frequent(my_list: list) -> int:
+    least_frequent = min(my_list, key=lambda x: my_list.count(x))
+    return least_frequent
     pass
 
